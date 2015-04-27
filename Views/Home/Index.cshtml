@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Employee Location-Based Self Services";
+}
+
+<div id="example">
+    <div class="k-header" style="padding: 1em;">
+        <div id="map"></div>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    
+    <div id="info" class="box-col"></div>
+
+    <script id="info-template" type="text/x-kendo-template">
+        <h4>#: Interests # (#= Name #)</h4>
+        <p class="info"> &nbsp;&nbsp;#= Address #</p>
+    </script>
+    <script id="empty-info-template" type="text/x-kendo-template">
+        <h4>Hover over employee locations</h4>
+        <p>&nbsp;</p>
+    </script>
+
+    <script>
+        function createMap() {
+            var template = kendo.template($("#info-template").html());
+            var emptyTemplate = kendo.template($("#empty-info-template").html());
+            var activeShape;
+
+            $("#map").kendoMap({
+                center: [39.166591, -84.457236],
+                minZoom: 8,
+                zoom: 10,
+                wraparound: false,
+                layers: [{
+                    type: "tile",
+                    //urlTemplate: "http://otile#= subdomain #.mqcdn.com/tiles/1.0.0/sat/#= zoom #/#= x #/#= y #.png",
+                    //subdomains: ["1", "2", "3"],
+                    //attribution: ""&copy; Tiles courtesy of <a href='http://www.mapquest.com/' target='_blank'>MapQuest</a>"
+                    urlTemplate: "http://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png",
+                    subdomains: ["a", "b", "c"],
+                    attribution: "© <a href='http://osm.org/copyright'>OpenStreetMap contributors</a>."
+                }, {
+                    type: "bubble",
+                    attribution: "Employee locations & interests.",
+                    style: {
+                        fill: {
+                            color: "#ff8",
+                            opacity: 0.6
+                        },
+                        stroke: {
+                            width: 0
+                        }
+                    },
+                    dataSource: [
+                                 { Name: "George Washington", Address: "Washington Avenue & Fifth Street", Interests: "Needing rides, Golf, Ski, Ping Pong", Urgency: 0.05, Location: [39.05, -84.15] },
+                                 { Name: "Dian Fan", Address: "Montgomery & Kentucky Drive", Interests: "Needing rides, Ping Pong, Tai Chi", Urgency: 0.2, Location: [39.4, -84.2] },
+                                 { Name: "Paycor Inc.", Address: "4811 Montgomery Road, Cincinnati, OH 45212", Interests: "", Urgency: 0.01, Location: [39.166591, -84.457236] },
+                                 { Name: "John Doe", Address: "Main Street & Kentucky Drive", Interests: "Giving rides, Golf, Bowling, Ping Pong", Urgency: 0.1, Location: [39.302, -84.8] },
+                                 { Name: "Tom Cruz", Address: "Gayloard Parkway & Preston Road", Interests: "Needing rides, Golf, Bowling", Urgency: 0.1, Location: [39.3, -84.9] }
+                                ],
+                    locationField: "Location",
+                    valueField: "Urgency"
+                }, {
+                    type: "marker",
+                    attribution: "Employee locations & interests.",
+                    dataSource: [
+                                 { Name: "George Washington", Address: "Washington Avenue & Fifth Street", Interests: "Needing rides, Golf, Ski, Ping Pong", Urgency: 0.05, Location: [39.05, -84.15] },
+                                 { Name: "Dian Fan", Address: "Montgomery & Kentucky Drive", Interests: "Needing rides, Ping Pong, Tai Chi", Urgency: 0.2, Location: [39.4, -84.2] },
+                                 { Name: "Paycor Inc.", Address: "4811 Montgomery Road, Cincinnati, OH 45212", Interests: "", Urgency: 0.01, Location: [39.166591, -84.457236] },
+                                 { Name: "John Doe", Address: "Main Street & Kentucky Drive", Interests: "Giving rides, Golf, Bowling, Ping Pong", Urgency: 0.1, Location: [39.302, -84.8] },
+                                 { Name: "Tom Cruz", Address: "Gayloard Parkway & Preston Road", Interests: "Needing rides, Golf, Bowling", Urgency: 0.1, Location: [39.3, -84.9] }
+                    ],
+                    locationField: "Location",
+                    titleField: "Name"
+                }],
+                shapeMouseEnter: onShapeMouseEnter,
+                reset: onReset
+            });
+
+            function onShapeMouseEnter(e) {
+                if (activeShape) {
+                    activeShape.options.set("stroke", null);
+                }
+
+                activeShape = e.shape;
+                activeShape.options.set("stroke", { width: 1.5, color: "#fff" });
+
+                $("#info").html(template(e.shape.dataItem));
+            }
+
+            function onReset() {
+                $("#info").html(emptyTemplate({}));
+                activeShape = null;
+            }
+
+            $("#select-symbol").kendoMobileButtonGroup({
+                select: function (e) {
+                    var layer = $("#map").data("kendoMap").layers[1];
+                    layer.options.symbol = "circle";
+                    layer.reset();
+                },
+                index: 0
+            });
+        }
+
+        $(document).ready(createMap);
+    </script>
+    <style>
+        .select-col {
+            float: right;
+        }
+
+        #example .box,
+        .demo-section {
+            margin: 1em auto;
+        }
+    </style>
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(function() {
+            var layer = $("#map").data("kendoMap").layers[1];
+            layer.options.symbol = "circle";
+            layer.reset();
+        });
+    </script>
+}
