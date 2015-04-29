@@ -102,3 +102,15 @@ C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Microso
 C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\obj\Debug\EmployeeLocationBasedServices.dll
 C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\obj\Debug\EmployeeLocationBasedServices.pdb
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Ninject.dll
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Ninject.Web.Common.dll
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Ninject.Web.WebApi.dll
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Ninject.Web.WebApi.WebHost.dll
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\WebActivatorEx.dll
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Ninject.xml
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Ninject.Web.Common.xml
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Ninject.Web.WebApi.xml
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Ninject.Web.WebApi.WebHost.xml
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Newtonsoft.Json.xml
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Ninject.Extensions.Conventions.dll
+C:\Users\cbyrne\Documents\GitHub\InnovationDay\Innovation-Day-Fusion\bin\Ninject.Extensions.Conventions.xml

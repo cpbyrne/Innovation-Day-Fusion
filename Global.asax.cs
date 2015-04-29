@@ -15,9 +15,7 @@ namespace EmployeeLocationBasedServices
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            //GlobalConfiguration.Configure(WebApiConfig.Register);
-            //http://forums.asp.net/t/1807570.aspx
-            //GlobalConfiguration.Configuration.Services.Add(typeof(ModelBinderProvider), new MyModelBinder());
+            GlobalConfiguration.Configure(WebApiConfig.Register);            
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
